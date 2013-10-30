@@ -1,4 +1,6 @@
-package com.example.haohjz;
+package com.eastcom.haohjz;
+
+import com.eastcom.haohjz.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

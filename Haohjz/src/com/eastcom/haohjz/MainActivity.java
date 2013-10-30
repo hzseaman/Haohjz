@@ -1,4 +1,6 @@
-package com.example.haohjz;
+package com.eastcom.haohjz;
+
+import com.eastcom.haohjz.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -11,26 +13,27 @@ import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
 
 public class MainActivity extends FragmentActivity {	
-	//¶¨ÒåFragmentTabHost¶ÔÏó
+	public static final String TAG = "com.eastcom.haohjz.MainActivity";
+	//ï¿½ï¿½ï¿½ï¿½FragmentTabHostï¿½ï¿½ï¿½ï¿½
 	private FragmentTabHost mTabHost;
 	
-	//¶¨ÒåÒ»¸ö²¼¾Ö
+	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private LayoutInflater layoutInflater;
 		
-	//¶¨ÒåÊý×éÀ´´æ·ÅFragment½çÃæ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fragmentï¿½ï¿½ï¿½ï¿½
 	private Class fragmentArray[] = {FragmentPage1.class,FragmentPage3.class,FragmentPage4.class,FragmentPage5.class};
 	
-	//¶¨ÒåÊý×éÀ´´æ·Å°´Å¥Í¼Æ¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½Å¥Í¼Æ¬
 	private int mImageViewArray[] = {R.drawable.tab_home_btn,R.drawable.tab_selfinfo_btn,
 									 R.drawable.tab_square_btn,R.drawable.tab_more_btn};
 	
-	//TabÑ¡Ïî¿¨µÄÎÄ×Ö
-	private String mTextviewArray[] = {"¼ÇÕË", "±¨±í", "ÉèÖÃ", "¸ü¶à"};
+	//TabÑ¡ï¿½î¿¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String mTextviewArray[] = {"è®°è´¦", "æŠ¥è¡¨", "è®¾ç½®", "æ›´å¤š"};
 	
 	public void onCreate(Bundle savedInstanceState) {
-		//È¥³ýtitle   
+		//åŽ»é™¤title   
 		requestWindowFeature(Window.FEATURE_NO_TITLE);   
-		//È¥µôActivityÉÏÃæµÄ×´Ì¬À¸
+		//È¥ï¿½ï¿½Activityï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½
 		//getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);  
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -38,31 +41,31 @@ public class MainActivity extends FragmentActivity {
     }
 	 
 	/**
-	 * ³õÊ¼»¯×é¼þ
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void initView(){
-		//ÊµÀý»¯²¼¾Ö¶ÔÏó
+		//Êµï¿½ï¿½Ö¶ï¿½ï¿½ï¿½
 		layoutInflater = LayoutInflater.from(this);
 				
-		//ÊµÀý»¯TabHost¶ÔÏó£¬µÃµ½TabHost
+		//Êµï¿½ï¿½TabHostï¿½ï¿½ï¿½ó£¬µÃµï¿½TabHost
 		mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);	
 		
-		//µÃµ½fragmentµÄ¸öÊý
+		//ï¿½Ãµï¿½fragmentï¿½Ä¸ï¿½ï¿½ï¿½
 		int count = fragmentArray.length;	
 				
 		for(int i = 0; i < count; i++){	
-			//ÎªÃ¿Ò»¸öTab°´Å¥ÉèÖÃÍ¼±ê¡¢ÎÄ×ÖºÍÄÚÈÝ
+			//ÎªÃ¿Ò»ï¿½ï¿½Tabï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ê¡¢ï¿½ï¿½ï¿½Öºï¿½ï¿½ï¿½ï¿½ï¿½
 			TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i]).setIndicator(getTabItemView(i));
-			//½«Tab°´Å¥Ìí¼Ó½øTabÑ¡Ïî¿¨ÖÐ
+			//ï¿½ï¿½Tabï¿½ï¿½Å¥ï¿½ï¿½Ó½ï¿½TabÑ¡ï¿½î¿¨ï¿½ï¿½
 			mTabHost.addTab(tabSpec, fragmentArray[i], null);
-			//ÉèÖÃTab°´Å¥µÄ±³¾°
+			//ï¿½ï¿½ï¿½ï¿½Tabï¿½ï¿½Å¥ï¿½Ä±ï¿½ï¿½ï¿½
 			mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selector_tab_background);
 		}
 	}
 				
 	/**
-	 * ¸øTab°´Å¥ÉèÖÃÍ¼±êºÍÎÄ×Ö
+	 * ï¿½ï¿½Tabï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private View getTabItemView(int index){
 		View view = layoutInflater.inflate(R.layout.tab_item_view, null);

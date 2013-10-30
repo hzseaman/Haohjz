@@ -1,4 +1,7 @@
-package com.example.haohjz;
+package com.eastcom.haohjz.login;
+
+import com.eastcom.haohjz.MainActivity;
+import com.eastcom.haohjz.R;
 
 import android.app.Activity;
 import android.content.Intent;
